@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- icon -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="../icons/favicon.ico">
+
+  
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <title>Studify</title>
+  </head>
+  <body>
+    <!--Navbar-->
+    <nav class="navbar navbar-dark bg-success w-100">
+        <div class="container-fluid">
+          <a class="navbar-brand d-flex gap-3 align-items-center"><img src = "../icons/favicon.ico" margin = "2"><p class = "mt-3">Studify</p></a>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Filter tasks" aria-label="Search" id = "searchbar">
+            <button type="button" class="btn btn-light" id = "search" onclick = "update()">
+            <div class="border-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"></path>
+              </svg>
+            </div>
+          </button>
+          </form>
+        </div>
+      </nav>
+
+    <!--Container-->
+
+    <div class="d-flex flex-column gap-2 w-75">
+    
+        <div class="container d-flex flex-row gap-4">
+          <!--Song container-->  
+          <div class="card card-play-button d-flex flex-column justify-content-around" style="width: 18rem;">
+              <div class="card-button d-flex justify-content-center h-50 align-items-center">
+                  <button type="button" class="btn btn-success rounded-circle play-button" id = "playButton"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                  <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                  </svg>
+                  </button>
+              </div>
+              <div class="card-body d-flex flex-column justify-content-around text-center">
+                <h5 class="card-title" id = "song-name">Song Name</h5>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" id = "dropdown" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Choose songs
+                  </button>
+                  <ul class="dropdown-menu" id = "songList" aria-labelledby="dropdownMenuButton1">
+                    <!--Songs will be rendered from local storage-->
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-5 m-0 bg-light rounded-3 w-75">
+                <div class="container-fluid py-2">
+                <h1 class="display-5 fw-bold" id = "time"></h1>
+                <p class="col-md-8 fs-4" id = "no_of_items">0</p>
+                <button class="btn btn-success btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#addTaskModal">Add task</button>
+                </div>
+            </div>
+        </div>
+        
+        <!--Modal for add task-->
+        <div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Task details</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id = "taskdetailsclose"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="tasktitle" class="form-label">Task title</label>
+                        <input type="text" class="form-control" id="tasktitle">
+                        <div class="form-text">Enter details</div>
+                      </div>
+                      <div class="form-floating">
+                        <textarea class="form-control" placeholder="type description" id="taskdesc" style="height: 100px"></textarea>
+                        <label for="taskdesc">Task Description</label>
+                      </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" id = "add">Add</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <!--List of tasks-->
+        <div class="d-flex flex-column gap-3 w-100" id = "tasklist">
+            
+        </div>
+    
+    </div>
+    
+
+    <script src="js/index.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  </body>
+</html>
